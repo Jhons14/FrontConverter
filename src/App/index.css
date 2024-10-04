@@ -1,0 +1,16 @@
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  height: 100vh;
+}
+
+.data-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.data-input {
+  height: 700px;
+}
