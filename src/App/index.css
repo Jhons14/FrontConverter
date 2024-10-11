@@ -3,14 +3,19 @@ body {
 }
 .app-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
   gap: 20px;
   height: 100vh;
+}
+
+.format-buttons {
+  display: grid;
+  height: 20px;
 }
 .data-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  height: 100vh;
+  height: 100%;
   padding: 24px;
   gap: 48px;
   box-sizing: border-box;
