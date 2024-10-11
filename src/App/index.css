@@ -1,16 +1,32 @@
+body {
+  margin: 0;
+}
 .app-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   height: 100vh;
 }
-
+.data-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 100vh;
+  padding: 24px;
+  gap: 48px;
+  box-sizing: border-box;
+}
 .data-form {
   display: flex;
+  gap: 8px;
   flex-direction: column;
   text-align: center;
 }
 
 .data-input {
-  height: 700px;
+  height: 100%;
+}
+
+.result-display {
+  border: solid 1px;
+  padding: 8px;
 }
