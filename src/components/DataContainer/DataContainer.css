@@ -1,28 +1,7 @@
-body {
-  margin: 0;
-}
-.app-container {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 20px;
-  min-height: 100vh;
-}
-
-.format-buttons-container {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  height: 100%;
-}
-
-.format-button {
-  height: 20px;
-}
 .data-container {
   display: grid;
   grid-template-rows: 1fr 40px 1fr;
   height: 100%;
-  padding: 24px;
   box-sizing: border-box;
   gap: 12px;
 }

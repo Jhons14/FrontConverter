@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './index.css';
-import { DataContainer } from '../components/DataContainer';
+import './App.css';
+import { DataContainer } from '../components/DataContainer/DataContainer';
 
 export function App() {
   const [formatToConvert, setFormatToConvert] = useState('JSON-XML');
@@ -20,7 +20,7 @@ export function App() {
       <div className='format-buttons-container'>
         <button
           type='button'
-          className='format-button'
+          className='button format-button'
           id={'JSON-XML'}
           onClick={() => onChooseFormat('JSON-XML')}
         >
@@ -28,14 +28,13 @@ export function App() {
         </button>
         <button
           type='button'
-          className='format-button'
+          className='button format-button'
           id={'XML-JSON'}
           onClick={() => onChooseFormat('XML-JSON')}
         >
           XML TO JSON
         </button>
       </div>
-
       <DataContainer
         formatToConvert={formatToConvert}
         dataResult={dataResult}

@@ -1,5 +1,4 @@
-import { useState } from 'react';
-
+import './DataContainer.css';
 export function DataContainer({
   dataResult,
   setDataResult,
@@ -67,15 +66,17 @@ export function DataContainer({
         id='data-form'
         onSubmit={(e) => onSubmitData(e, data)}
       >
-        <label id='data-label' htmlFor='data-input'>
+        <h1 id='data-label' htmlFor='data-input'>
           {formatToConvert}
-        </label>
+        </h1>
         <textarea
           className='data-input'
           id='data-input'
           onChange={(e) => setData(e.target?.value)}
         ></textarea>
-        <button type='submit'>Submit</button>
+        <button className='button submit-button' type='submit'>
+          Submit
+        </button>
       </form>
       <div>{!!error && <div>{error}</div>}</div>
       <pre className='result-display'>{dataResult}</pre>
