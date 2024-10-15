@@ -1,0 +1,26 @@
+.data-container {
+  padding: 20px;
+  display: grid;
+  grid-template-rows: 2fr 20px 1fr;
+  height: inherit;
+  max-height: inherit;
+  gap: 12px;
+  box-sizing: border-box;
+}
+.data-form {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.data-input {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.result-display {
+  overflow-y: auto;
+  border: solid 1px;
+  margin: 0;
+}
