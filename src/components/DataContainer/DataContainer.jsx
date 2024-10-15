@@ -8,10 +8,14 @@ export function DataContainer({
   error,
   setError,
 }) {
-  const JSON_2_XML_URL = 'http://127.0.0.1:5000/convert/json-to-xml';
-  const XML_2_JSON_URL = 'http://127.0.0.1:5000/convert/xml-to-json';
+  const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
+  const JSON_2_XML_URL = `${SERVER_URL}/convert/json-to-xml`;
+  const XML_2_JSON_URL = `${SERVER_URL}/convert/xml-to-json`;
+  const formatErrorMsg = 'Error. Por favor revisa el formato de entrada';
   function onSubmitData(e, data) {
+    setDataResult('');
+    setError('');
     e.preventDefault();
     if (formatToConvert === 'JSON-XML') {
       onSubmitJSON(data);
@@ -21,29 +25,25 @@ export function DataContainer({
   }
 
   async function onSubmitJSON(jsonData) {
-    await fetch(JSON_2_XML_URL, {
+    const response = await fetch(JSON_2_XML_URL, {
       method: 'POST',
       body: jsonData,
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then((xmlText) => {
-        // Now you can work with the parsed XML document
-        setDataResult(xmlText); // Asignar el contenido del XML
-      })
-      .catch((error) => {
-        setError(error);
-      });
+    });
+    if (response.ok) {
+      setDataResult(await response.text());
+    } else if (response.status === 400) {
+      setError(formatErrorMsg);
+    } else if (!response || response.status === 500) {
+      setError('Error en el servidor');
+    }
   }
 
   async function onSubmitXML(xmlData) {
+    console.log(xmlData);
+
     const response = await fetch(XML_2_JSON_URL, {
       method: 'POST',
       body: xmlData,
@@ -53,9 +53,11 @@ export function DataContainer({
     });
 
     if (response.ok) {
-      setDataResult(response.json());
+      setDataResult(await response.json());
     } else if (response.status === 400) {
-      setError('Peticion mal formada revisa el formato de entrada');
+      setError(formatErrorMsg);
+    } else if (!response || response.status === 500) {
+      setError('Error en el servidor');
     }
   }
 
@@ -71,6 +73,7 @@ export function DataContainer({
         </h1>
         <textarea
           className='data-input'
+          placeholder={`Put some ${formatToConvert} text`}
           id='data-input'
           onChange={(e) => setData(e.target?.value)}
         ></textarea>

@@ -2,19 +2,20 @@ body {
   margin: 0;
 }
 .app-container {
-  padding: 20px 40px;
-  gap: 40px;
   display: grid;
   grid-template-columns: auto 1fr;
-  min-height: 100vh;
+  max-height: 100vh;
+  height: 100vh;
   box-sizing: border-box;
 }
 
 .format-buttons-container {
+  padding: 20px;
+  gap: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
+  justify-content: center;
+  max-height: inherit;
   box-sizing: border-box;
 }
 
@@ -39,6 +40,11 @@ body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+.active {
+  background-color: #0b612f;
+  color: #fff;
 }
 
 .button:hover {

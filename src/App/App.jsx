@@ -11,8 +11,15 @@ export function App() {
   function onChooseFormat(format) {
     setFormatToConvert(format);
     setDataResult('');
-    document.getElementById('data-input').value = '';
     setError();
+  }
+
+  function isSelected(format) {
+    if (format === formatToConvert) {
+      return 'active';
+    } else {
+      return '';
+    }
   }
 
   return (
@@ -20,7 +27,7 @@ export function App() {
       <div className='format-buttons-container'>
         <button
           type='button'
-          className='button format-button'
+          className={`button format-button ${(isSelected('JSON-XML'))}`}
           id={'JSON-XML'}
           onClick={() => onChooseFormat('JSON-XML')}
         >
@@ -28,7 +35,7 @@ export function App() {
         </button>
         <button
           type='button'
-          className='button format-button'
+          className={`button format-button ${(isSelected('XML-JSON'))}`}
           id={'XML-JSON'}
           onClick={() => onChooseFormat('XML-JSON')}
         >

@@ -1,9 +1,11 @@
 .data-container {
+  padding: 20px;
   display: grid;
-  grid-template-rows: 1fr 40px 1fr;
-  height: 100%;
-  box-sizing: border-box;
+  grid-template-rows: 2fr 20px 1fr;
+  height: inherit;
+  max-height: inherit;
   gap: 12px;
+  box-sizing: border-box;
 }
 .data-form {
   display: flex;
@@ -14,9 +16,11 @@
 
 .data-input {
   height: 100%;
+  overflow-y: auto;
 }
 
 .result-display {
+  overflow-y: auto;
   border: solid 1px;
-  padding: 8px;
+  margin: 0;
 }
