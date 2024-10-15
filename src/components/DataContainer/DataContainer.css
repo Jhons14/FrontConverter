@@ -1,0 +1,22 @@
+.data-container {
+  display: grid;
+  grid-template-rows: 1fr 40px 1fr;
+  height: 100%;
+  box-sizing: border-box;
+  gap: 12px;
+}
+.data-form {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.data-input {
+  height: 100%;
+}
+
+.result-display {
+  border: solid 1px;
+  padding: 8px;
+}
