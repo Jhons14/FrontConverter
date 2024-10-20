@@ -42,8 +42,6 @@ export function DataContainer({
   }
 
   async function onSubmitXML(xmlData) {
-    console.log(xmlData);
-
     const response = await fetch(XML_2_JSON_URL, {
       method: 'POST',
       body: xmlData,
