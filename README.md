@@ -27,26 +27,33 @@ Este proyecto es una aplicación web que permite convertir distintos formatos de
 - Python 3.8 o superior (para el backend)
 - [Instalar dependencias de Python](https://pip.pypa.io/en/stable/installation/) si es necesario
 
-### 1. Clonar el repositorio
+
+### 1. Instalación del frontend
+
+Clona el repositorio:
 
 ```
 git clone https://github.com/Jhons14/FrontConverter.git
-cd conversor-mensajeria
 ```
 
-### 2. Instalación del frontend
 Navega al directorio del frontend e Instala las dependencias:
 ```
-cd frontend
+cd FrontConverter
 npm install
 ```
-Inicia el servidor de desarrollo
+Inicia el servidor de desarrollo:
 ```
 npm run dev
 ```
 El frontend estará disponible en http://localhost:5173.
 
-### 3. Instalación del backend
+### 2. Instalación del backend
+
+Clonar el repositorio:
+```
+https://github.com/Jhons14/BackConverter.git
+```
+
 Navega al directorio del backend:
 
 ```
@@ -64,7 +71,7 @@ Instala las dependencias:
 pip install -r requirements.txt
 ```
 
-Inicia el servidor backend:
+Inicia el servidor:
 ```
 python app.py
 ```
