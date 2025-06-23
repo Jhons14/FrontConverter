@@ -1,5 +1,8 @@
 body {
   margin: 0;
+  background: linear-gradient(135deg, #0f0c29 0%, #2d0036 50%, #4b006e 100%);
+  color: #f3eaff;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
 }
 .app-container {
   padding: 12px;

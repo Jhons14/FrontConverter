@@ -18,6 +18,8 @@
 
 .data-input,
 .data-output {
+  background: linear-gradient(135deg, #2d0036 0%, #4b006e 100%);
+
   font-size: xx-small;
   height: 100%;
   box-sizing: border-box;
