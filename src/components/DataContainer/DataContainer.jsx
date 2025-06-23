@@ -5,14 +5,13 @@ export function DataContainer({
   formatToConvert,
   data,
   setData,
-  error,
   setError,
 }) {
   const SERVER_URL = import.meta.env.VITE_SERVER_URL;
-
   const JSON_2_XML_URL = `${SERVER_URL}/convert/json-to-xml`;
   const XML_2_JSON_URL = `${SERVER_URL}/convert/xml-to-json`;
   const formatErrorMsg = 'Error. Por favor revisa el formato de entrada';
+
   function onSubmitData(e, data) {
     setDataResult('');
     setError('');
@@ -60,27 +59,19 @@ export function DataContainer({
   }
 
   return (
-    <div className='data-container'>
-      <form
-        className='data-form'
-        id='data-form'
-        onSubmit={(e) => onSubmitData(e, data)}
-      >
-        <h1 id='data-label' htmlFor='data-input'>
-          {formatToConvert}
-        </h1>
+    <form className='data-form' onSubmit={(e) => onSubmitData(e, data)}>
+      <div className='data-container'>
         <textarea
+          value={data}
           className='data-input'
           placeholder={`Put some ${formatToConvert} text`}
-          id='data-input'
           onChange={(e) => setData(e.target?.value)}
         ></textarea>
-        <button className='button submit-button' type='submit'>
-          Submit
-        </button>
-      </form>
-      <div>{!!error && <div>{error}</div>}</div>
-      <pre className='result-display'>{dataResult}</pre>
-    </div>
+        <textarea className='data-output' value={dataResult}></textarea>
+      </div>
+      <button className='button submit-button' type='submit'>
+        Submit
+      </button>
+    </form>
   );
 }

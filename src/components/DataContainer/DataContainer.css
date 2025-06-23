@@ -1,26 +1,24 @@
 .data-container {
-  padding: 20px;
+  text-align: center;
   display: grid;
-  grid-template-rows: 2fr 20px 1fr;
-  height: inherit;
-  max-height: inherit;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
   gap: 12px;
   box-sizing: border-box;
 }
+
 .data-form {
   display: flex;
-  gap: 8px;
   flex-direction: column;
-  text-align: center;
-}
-
-.data-input {
   height: 100%;
-  overflow-y: auto;
+  gap: 8px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.result-display {
-  overflow-y: auto;
-  border: solid 1px;
-  margin: 0;
+.data-input,
+.data-output {
+  font-size: xx-small;
+  height: 100%;
+  box-sizing: border-box;
 }

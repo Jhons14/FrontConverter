@@ -2,15 +2,18 @@ body {
   margin: 0;
 }
 .app-container {
+  padding: 12px;
+  gap: 12px;
+
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 9fr;
   max-height: 100vh;
   height: 100vh;
   box-sizing: border-box;
 }
 
 .format-buttons-container {
-  padding: 20px;
+  width: 100%;
   gap: 12px;
   display: flex;
   flex-direction: column;
@@ -29,7 +32,7 @@ body {
   cursor: pointer;
   font-family: 'Akzidenz Grotesk BQ Medium', -apple-system, BlinkMacSystemFont,
     sans-serif;
-  font-size: 16px;
+  font-size: xx-small;
   font-weight: 400;
   outline: none;
   outline: 0;
@@ -51,6 +54,20 @@ body {
 .button:hover {
   box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
   transform: translateY(-2px);
+}
+
+.formData-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+h3 {
+  font-size: 24px;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 8px;
 }
 
 @media (min-width: 768px) {
