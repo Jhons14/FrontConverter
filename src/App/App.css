@@ -1,15 +1,18 @@
+@import 'tailwindcss';
+
 body {
   margin: 0;
   background: linear-gradient(135deg, #0f0c29 0%, #2d0036 50%, #4b006e 100%);
   color: #f3eaff;
-  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-family: 'Akzidenz Grotesk BQ Medium', -apple-system, BlinkMacSystemFont,
+    sans-serif;
 }
 .app-container {
   padding: 12px;
   gap: 12px;
 
   display: grid;
-  grid-template-columns: 1fr 9fr;
+  grid-template-columns: auto 1fr;
   max-height: 100vh;
   height: 100vh;
   box-sizing: border-box;
@@ -19,6 +22,7 @@ body {
   width: 100%;
   gap: 12px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   max-height: inherit;
@@ -26,31 +30,34 @@ body {
 }
 
 .button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #cacaca;
-  border: 1px solid #cacaca;
   border-radius: 4px;
   box-shadow: #0000001a 0 2px 4px 0;
   box-sizing: border-box;
   color: #000000;
   cursor: pointer;
-  font-family: 'Akzidenz Grotesk BQ Medium', -apple-system, BlinkMacSystemFont,
-    sans-serif;
-  font-size: xx-small;
-  font-weight: 400;
+
+  font-size: small;
+  font-weight: bold;
   outline: none;
   outline: 0;
-  padding: 10px 25px;
+  padding: 8px 12px;
   text-align: center;
+  width: fit-content;
   transform: translateY(0);
   transition: transform 150ms, box-shadow 150ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  /* user-select: none; */
+  /* -webkit-user-select: none; */
+  /* touch-action: manipulation; */
 }
 
 .active {
   background-color: #000000;
-  border: 1px solid #000000;
+  border: 2px solid #cacaca;
   color: #cacaca;
 }
 
@@ -71,10 +78,4 @@ h3 {
   text-align: center;
   margin: 0;
   margin-bottom: 8px;
-}
-
-@media (min-width: 768px) {
-  .button {
-    padding: 10px 30px;
-  }
 }

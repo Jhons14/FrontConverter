@@ -4,15 +4,6 @@ import './App.css';
 
 export function App() {
   const [formatToConvert, setFormatToConvert] = useState('JSON-XML');
-  const [data, setData] = useState('');
-  const [dataResult, setDataResult] = useState('');
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setDataResult('');
-    setError(null);
-    setData('');
-  }, [formatToConvert]);
 
   function onChooseFormat(format) {
     setFormatToConvert(format);
@@ -48,15 +39,7 @@ export function App() {
       </div>
       <div className='formData-container'>
         <h3 htmlFor='data-input'>{formatToConvert}</h3>
-        <DataContainer
-          formatToConvert={formatToConvert}
-          dataResult={dataResult}
-          setDataResult={setDataResult}
-          data={data}
-          setData={setData}
-          error={error}
-          setError={setError}
-        />
+        <DataContainer formatToConvert={formatToConvert} />
       </div>
     </div>
   );

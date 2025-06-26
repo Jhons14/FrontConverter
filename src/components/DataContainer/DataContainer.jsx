@@ -1,21 +1,34 @@
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { InputWindow } from '../InputWindow/InputWindow';
 import './DataContainer.css';
-export function DataContainer({
-  dataResult,
-  setDataResult,
-  formatToConvert,
-  data,
-  setData,
-  setError,
-}) {
+import { OutputWindow } from '../OutputWindow/OutputWindow';
+
+export function DataContainer({ formatToConvert }) {
   const SERVER_URL = import.meta.env.VITE_SERVER_URL;
   const JSON_2_XML_URL = `${SERVER_URL}/convert/json-to-xml`;
   const XML_2_JSON_URL = `${SERVER_URL}/convert/xml-to-json`;
   const formatErrorMsg = 'Error. Por favor revisa el formato de entrada';
+  const formRef = useRef(null);
+
+  const [data, setData] = useState('');
+  const [dataResult, setDataResult] = useState('');
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setDataResult('');
+    setError(null);
+    setData('');
+  }, [formatToConvert]);
 
   function onSubmitData(e, data) {
+    e.preventDefault();
+    if (!data || data.trim() === '') {
+      alert('Por favor ingresa datos para convertir');
+      return;
+    }
     setDataResult('');
     setError('');
-    e.preventDefault();
+
     if (formatToConvert === 'JSON-XML') {
       onSubmitJSON(data);
     } else {
@@ -59,16 +72,32 @@ export function DataContainer({
   }
 
   return (
-    <form className='data-form' onSubmit={(e) => onSubmitData(e, data)}>
-      <div className='data-container'>
-        <textarea
-          value={data}
+    <form
+      className='data-form'
+      ref={formRef}
+      onSubmit={(e) => onSubmitData(e, data)}
+    >
+      {/* <textarea
+          defaultValue={
+            <pre>
+              <code id='jsonInput'>{data}</code>
+            </pre>
+          }
           className='data-input'
           placeholder={`Put some ${formatToConvert} text`}
-          onChange={(e) => setData(e.target?.value)}
-        ></textarea>
-        <textarea className='data-output' value={dataResult}></textarea>
-      </div>
+          onChange={(e) => onInputText(e.target?.value)}
+        ></textarea> */}
+      {formatToConvert === 'JSON-XML' ? (
+        <div className='data-container'>
+          <InputWindow format={'json'} setData={setData} />
+          <OutputWindow dataResult={dataResult} format={'xml'} />
+        </div>
+      ) : (
+        <div className='data-container'>
+          <InputWindow format={'xml'} setData={setData} />
+          <OutputWindow dataResult={dataResult} format={'json'} />
+        </div>
+      )}
       <button className='button submit-button' type='submit'>
         Submit
       </button>
