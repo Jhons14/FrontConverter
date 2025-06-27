@@ -23,7 +23,6 @@ export function DataContainer({ formatToConvert }) {
   function onSubmitData(e, data) {
     e.preventDefault();
     if (!data || data.trim() === '') {
-      alert('Por favor ingresa datos para convertir');
       return;
     }
     setDataResult('');
@@ -47,7 +46,7 @@ export function DataContainer({ formatToConvert }) {
     if (response.ok) {
       setDataResult(await response.text());
     } else if (response.status === 400) {
-      setError(formatErrorMsg);
+      alert(formatErrorMsg);
     } else if (!response || response.status === 500) {
       setError('Error en el servidor');
     }
@@ -65,7 +64,7 @@ export function DataContainer({ formatToConvert }) {
     if (response.ok) {
       setDataResult(await response.json());
     } else if (response.status === 400) {
-      setError(formatErrorMsg);
+      alert(formatErrorMsg);
     } else if (!response || response.status === 500) {
       setError('Error en el servidor');
     }
@@ -77,16 +76,6 @@ export function DataContainer({ formatToConvert }) {
       ref={formRef}
       onSubmit={(e) => onSubmitData(e, data)}
     >
-      {/* <textarea
-          defaultValue={
-            <pre>
-              <code id='jsonInput'>{data}</code>
-            </pre>
-          }
-          className='data-input'
-          placeholder={`Put some ${formatToConvert} text`}
-          onChange={(e) => onInputText(e.target?.value)}
-        ></textarea> */}
       {formatToConvert === 'JSON-XML' ? (
         <div className='data-container'>
           <InputWindow format={'json'} setData={setData} />
@@ -99,7 +88,7 @@ export function DataContainer({ formatToConvert }) {
         </div>
       )}
       <button className='button submit-button' type='submit'>
-        Submit
+        Transform
       </button>
     </form>
   );
