@@ -39,7 +39,7 @@ export const OutputWindow = ({ format, dataResult, error }) => {
   };
 
   return (
-    <div className='h-full relative w-full'>
+    <div className='h-full relative w-full overflow-y-auto'>
       <CodeMirror
         value={content}
         align='start'

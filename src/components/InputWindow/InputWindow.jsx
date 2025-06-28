@@ -62,7 +62,7 @@ export function InputWindow({ format, setData }) {
   const extensions = format === 'xml' ? [xml()] : [json()];
 
   return (
-    <div className='h-full relative w-full overflow-y-hidden'>
+    <div className='h-full relative w-full overflow-y-auto'>
       <CodeMirror
         name='form'
         value={code}

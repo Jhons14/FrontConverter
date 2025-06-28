@@ -1,8 +1,7 @@
 .data-form {
   display: grid;
   grid-template-rows: 1fr auto auto;
-  overflow-y: hidden;
-
+  overflow-y: auto;
   height: 100%;
   width: 100%;
   gap: 8px;
@@ -11,7 +10,7 @@
 }
 .data-container {
   display: grid;
-  overflow-y: hidden;
+  overflow-y: auto;
   grid-template-columns: 1fr 1fr;
   height: 100%;
   gap: 12px;
