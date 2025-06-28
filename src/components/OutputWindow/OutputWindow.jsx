@@ -15,13 +15,13 @@ export const OutputWindow = ({ format, dataResult, error }) => {
     setContent(dataResult);
   }, [dataResult]);
 
-  const handleFormat = () => {
-    if (!content || content.trim() === '') {
+  const handleXMLFormat = () => {
+    if (!code || code.trim() === '') {
       return;
     }
     try {
       const parser = new DOMParser();
-      const xml = parser.parseFromString(content, 'application/xml');
+      const xml = parser.parseFromString(code, 'application/xml');
 
       if (xml.getElementsByTagName('parsererror').length > 0) {
         throw new Error('XML inválido');
@@ -31,9 +31,23 @@ export const OutputWindow = ({ format, dataResult, error }) => {
       const rawXml = s.serializeToString(xml);
       const prettyXml = vkbeautify.xml(rawXml);
 
-      setContent(prettyXml);
+      setCode(prettyXml);
     } catch (e) {
       alert('XML inválido');
+      console.error(e);
+    }
+  };
+
+  const handleJSONFormat = () => {
+    if (!code || code.trim() === '') {
+      return;
+    }
+    try {
+      const json = JSON.parse(code);
+      const pretty = JSON.stringify(json, null, 2);
+      setCode(pretty);
+    } catch (e) {
+      alert('JSON inválido');
       console.error(e);
     }
   };
@@ -50,7 +64,7 @@ export const OutputWindow = ({ format, dataResult, error }) => {
         onChange={(value) => setContent(value)}
       />
       <button
-        onClick={handleFormat}
+        onClick={format === 'xml' ? handleXMLFormat : handleJSONFormat}
         type='button'
         className='bg-blue-600 text-white p-2 rounded hover:bg-blue-700 absolute top-2 right-2 cursor-pointer'
       >
