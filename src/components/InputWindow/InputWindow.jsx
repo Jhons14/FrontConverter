@@ -62,7 +62,7 @@ export function InputWindow({ format, setData }) {
   const extensions = format === 'xml' ? [xml()] : [json()];
 
   return (
-    <div className='h-full relative w-full'>
+    <div className='h-full relative w-full overflow-y-hidden'>
       <CodeMirror
         name='form'
         value={code}
@@ -74,7 +74,7 @@ export function InputWindow({ format, setData }) {
         onChange={(value) => {
           setCode(value);
         }}
-        className='bg-gray-500 rounded-md p-1 overflow-auto text-sm h-full'
+        className='bg-gray-500 rounded-md p-1  text-sm h-full '
       />
       <button
         onClick={format === 'xml' ? handleXMLFormat : handleJSONFormat}

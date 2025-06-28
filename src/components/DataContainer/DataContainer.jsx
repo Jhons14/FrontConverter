@@ -3,7 +3,7 @@ import { InputWindow } from '../InputWindow/InputWindow';
 import './DataContainer.css';
 import { OutputWindow } from '../OutputWindow/OutputWindow';
 
-export function DataContainer({ formatToConvert }) {
+export function DataContainer({ formatToConvert, setFormatToConvert }) {
   const SERVER_URL = import.meta.env.VITE_SERVER_URL;
   const JSON_2_XML_URL = `${SERVER_URL}/convert/json-to-xml`;
   const XML_2_JSON_URL = `${SERVER_URL}/convert/xml-to-json`;
@@ -70,6 +70,17 @@ export function DataContainer({ formatToConvert }) {
     }
   }
 
+  function onChooseFormat(format) {
+    setFormatToConvert(format);
+  }
+
+  function isSelected(format) {
+    if (format === formatToConvert) {
+      return 'active';
+    } else {
+      return '';
+    }
+  }
   return (
     <form
       className='data-form'
@@ -87,9 +98,32 @@ export function DataContainer({ formatToConvert }) {
           <OutputWindow dataResult={dataResult} format={'json'} />
         </div>
       )}
-      <button className='button submit-button' type='submit'>
-        Transform
-      </button>
+      <div className='flex items-center justify-center'>
+        <button
+          className='button bg-blue-600 hover:bg-blue-700 cursor-pointer my-2'
+          type='submit'
+        >
+          Transform
+        </button>
+      </div>
+      <div className='format-buttons-container'>
+        <button
+          type='button'
+          className={` format-button ${isSelected('JSON-XML')}`}
+          id={'JSON-XML'}
+          onClick={() => onChooseFormat('JSON-XML')}
+        >
+          JSON TO XML
+        </button>
+        <button
+          type='button'
+          className={` format-button ${isSelected('XML-JSON')}`}
+          id={'XML-JSON'}
+          onClick={() => onChooseFormat('XML-JSON')}
+        >
+          XML TO JSON
+        </button>
+      </div>
     </form>
   );
 }
