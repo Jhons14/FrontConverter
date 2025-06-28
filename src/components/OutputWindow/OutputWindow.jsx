@@ -7,12 +7,12 @@ import { useEffect, useState } from 'react';
 import vkbeautify from 'vkbeautify';
 
 export const OutputWindow = ({ format, dataResult, error }) => {
-  const [content, setContent] = useState('');
+  const [code, setCode] = useState('');
 
   const extensions = format === 'xml' ? [xml()] : [json()];
 
   useEffect(() => {
-    setContent(dataResult);
+    setCode(dataResult);
   }, [dataResult]);
 
   const handleXMLFormat = () => {
@@ -55,13 +55,13 @@ export const OutputWindow = ({ format, dataResult, error }) => {
   return (
     <div className='h-full relative w-full overflow-y-auto'>
       <CodeMirror
-        value={content}
+        value={code}
         align='start'
         theme={'dark'}
         height='100%'
         extensions={extensions}
         className='bg-gray-500 rounded-md p-1 text-sm h-full'
-        onChange={(value) => setContent(value)}
+        onChange={(value) => setCode(value)}
       />
       <button
         onClick={format === 'xml' ? handleXMLFormat : handleJSONFormat}
