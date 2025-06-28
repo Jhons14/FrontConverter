@@ -46,7 +46,7 @@ export const OutputWindow = ({ format, dataResult, error }) => {
         theme={'dark'}
         height='100%'
         extensions={extensions}
-        className='bg-gray-500 rounded-md p-1 overflow-auto text-sm h-full'
+        className='bg-gray-500 rounded-md p-1 text-sm h-full'
         onChange={(value) => setContent(value)}
       />
       <button
